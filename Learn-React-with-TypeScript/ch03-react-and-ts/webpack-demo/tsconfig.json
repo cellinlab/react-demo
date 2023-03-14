@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext" // Use the latest JavaScript features
+    ],
+    "moduleResolution": "node", // Resolve modules using Node.js' module resolution strategy
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    "esModuleInterop": true, // Allow importing non-ES modules with default export
+    "jsx": "react", // Use the React JSX compiler
+    "forceConsistentCasingInFileNames": true, // Ensure casing is consistent across your entire project
+    "strict": true, // Enable all strict type-checking options
+  },
+  "include": [
+    "src" // Include all files from the src directory
+  ],
+  "exclude": [
+    "node_modules", // Exclude the node_modules directory
+    "dist" // Exclude the dist directory
+  ]
+}
