@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef, useMemo } from 'react';
 
 import { getPerson } from './getPerson';
 
@@ -29,6 +29,15 @@ function reducer(state: State, action: Action): State {
   }
 }
 
+function sillyExpensiveFunction() {
+  console.log('Excute sillyExpensiveFunction');
+  let sum = 0;
+  for (let i = 0; i < 1000; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
 export function PersonScore() {
   const [{ name, score, loading }, dispatch] = useReducer(reducer, {
     name: undefined,
@@ -36,6 +45,8 @@ export function PersonScore() {
     loading: true,
   });
   const addBtnRef = useRef<HTMLButtonElement>(null);
+
+  const expensiveCalculation = useMemo(() => sillyExpensiveFunction(), []);
 
   useEffect(() => {
     getPerson().then((person) => {
@@ -58,6 +69,7 @@ export function PersonScore() {
       <h3>
         {name},{score}
       </h3>
+      <p>{expensiveCalculation}</p>
       <button ref={addBtnRef} onClick={() => dispatch({ type: 'increament' })}>
         Add
       </button>
