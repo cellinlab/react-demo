@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+import { ReactComponent as CrossIcon } from './cross.svg';
+import { ReactComponent as InfoIcon } from './info.svg';
+import { ReactComponent as WarningIcon } from './warning.svg';
+
 type Props = {
   type?: string;
   heading: string;
@@ -29,7 +33,11 @@ export function Alert({ type = 'information', heading, children, closeable, onCl
           role="img"
           aria-label={type === 'warning' ? 'Warning' : 'Information'}
         >
-          {type === 'warning' ? '⚠️' : 'ℹ️'}
+          {type === 'warning' ? (
+            <WarningIcon className="fill-amber-900 w-5 h-5" />
+          ) : (
+            <InfoIcon className="fill-teal-900 w-5 h-5" />
+          )}
         </span>
         <span className="font-bold">{heading}</span>
         {closeable && (
@@ -38,7 +46,7 @@ export function Alert({ type = 'information', heading, children, closeable, onCl
             onClick={handleCloseClick}
           >
             <span role="img" aria-label="Close">
-              ❌
+              <CrossIcon className="fill-current w-5 h-5" />
             </span>
           </button>
         )}
