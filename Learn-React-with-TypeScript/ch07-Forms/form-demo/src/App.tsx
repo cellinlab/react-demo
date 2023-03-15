@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 
 import './App.css';
 
-import { ContactPage, contactPageAction } from './ContactPage2';
+import { ContactPage } from './ContactPage3';
 import { ThankYouPage } from './ThankYouPage';
 
 const router = createBrowserRouter([
@@ -13,7 +13,6 @@ const router = createBrowserRouter([
   {
     path: '/contact',
     element: <ContactPage />,
-    action: contactPageAction,
   },
   {
     path: '/thank-you/:name',
