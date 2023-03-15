@@ -96,3 +96,17 @@ npx create-react-app my-app --template typescript
   ```bash
   npm i @reduxjs/toolkit react-redux
   ```
+
+### JSON Server
+
+- install
+  ```bash
+  npm i -D json-server
+  ```
+- create `db.json`
+- `package.json`
+  ```json
+  "scripts": {
+    "server": "json-server --watch db.json --port 3001 --delay 1000"
+  },
+  ```
