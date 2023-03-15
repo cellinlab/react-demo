@@ -7,7 +7,7 @@ type Contact = {
   notes: string;
 };
 
-export default function ContactPage() {
+export function ContactPage() {
   const [contact, setContact] = useState<Contact>({
     name: '',
     email: '',
