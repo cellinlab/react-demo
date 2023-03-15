@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import { products } from '../data/products';
-import React from 'react';
 
 export function ProductsPage() {
   return (
@@ -9,7 +9,12 @@ export function ProductsPage() {
         {products.map((product) => {
           return (
             <li key={product.id} className="p-1 text-base text-slate-800">
-              {product.name}
+              <Link
+                to={`/product/${product.id}`}
+                className="p-1 text-base text-slate-800 hover:underline"
+              >
+                {product.name}
+              </Link>
             </li>
           );
         })}
