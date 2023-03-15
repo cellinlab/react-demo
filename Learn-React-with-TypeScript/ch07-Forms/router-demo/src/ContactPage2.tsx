@@ -29,15 +29,15 @@ export function ContactPage() {
       <Form method="post">
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="name" required />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="email">Your email</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" required pattern="\S+@\S+\.\S+" />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="reason">Reason for contact</label>
-          <select id="reason" name="reason">
+          <select id="reason" name="reason" required>
             <option value=""></option>
             <option value="Support">Support</option>
             <option value="Feedback">Feedback</option>
