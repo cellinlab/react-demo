@@ -83,6 +83,13 @@ npx create-react-app my-app --template typescript
   }
   ```
 
+### React Router
+
+- install
+  ```bash
+  npm i react-router-dom
+  ```
+
 ### Redux
 
 - install
