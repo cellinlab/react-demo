@@ -11,6 +11,14 @@ export default function ContactPage() {
   const fieldStyle = 'flex flex-col mb-2';
   function handleSumit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const contact = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      reason: formData.get('reason'),
+      notes: formData.get('notes'),
+    } as Contact;
+    console.log(contact);
   }
   return (
     <div className="flex flex-col py-10 max-w-md mx-auto">
