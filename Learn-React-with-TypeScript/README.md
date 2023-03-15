@@ -82,3 +82,10 @@ npx create-react-app my-app --template typescript
     plugins: [require("@tailwindcss/forms")],
   }
   ```
+
+### Redux
+
+- install
+  ```bash
+  npm i @reduxjs/toolkit react-redux
+  ```

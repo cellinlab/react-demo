@@ -1,10 +1,10 @@
-import { User } from './api/authenticate';
+import { useSelector } from 'react-redux';
 
+import type { RootState } from './store/store';
 import { Content } from './Content';
-import { useAppContext } from './AppContext';
 
 export function Main() {
-  const { user } = useAppContext();
+  const user = useSelector((state: RootState) => state.user.user);
   return (
     <main className="py-8">
       <h1 className="text-3xl text-center font-bold underline">Welcome</h1>

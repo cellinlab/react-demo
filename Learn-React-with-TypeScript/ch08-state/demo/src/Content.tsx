@@ -1,10 +1,14 @@
-import { useAppContext } from './AppContext';
+import { useSelector } from 'react-redux';
+
+import type { RootState } from './store/store';
 
 export function Content() {
-  const { permissions } = useAppContext();
+  const permissions = useSelector((state: RootState) => state.user.permissions);
+
   if (permissions === undefined) {
     return null;
   }
+
   return permissions.includes('admin') ? (
     <p className="mt-4 text-l text-center">
       You have the <code>admin</code> permission.
