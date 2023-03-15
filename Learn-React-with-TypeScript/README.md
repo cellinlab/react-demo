@@ -61,8 +61,24 @@ npx create-react-app my-app --template typescript
   }
   ```
 - `index.css`
+
   ```css
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
+  ```
+
+- `@tailwindcss/forms`
+  ```bash
+  npm i -D @tailwindcss/forms
+  ```
+- `tailwind.config.js`
+  ```js
+  module.exports = {
+    content: ["./src/**/*.{js,jsx,ts,tsx}"],
+    theme: {
+      extend: {},
+    },
+    plugins: [require("@tailwindcss/forms")],
+  }
   ```
