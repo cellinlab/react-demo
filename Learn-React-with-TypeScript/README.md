@@ -110,3 +110,10 @@ npx create-react-app my-app --template typescript
     "server": "json-server --watch db.json --port 3001 --delay 1000"
   },
   ```
+
+### React Query
+
+- install
+  ```bash
+  npm i @tanstack/react-query
+  ```
