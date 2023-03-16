@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, defer } from 'react-router-dom';
 
 import { PostsPage } from './posts/PostsPage';
 
@@ -8,7 +8,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <PostsPage />,
-    loader: getPosts,
+    loader: async () => defer({ posts: getPosts() }),
   },
 ]);
 
