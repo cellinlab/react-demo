@@ -1,19 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { IdValue } from './types';
 
-export function useChecked() {
-  const [checkedIds, setCheckedIds] = useState<IdValue[]>([]);
+type Params = {
+  checkedIds?: IdValue[];
+  onCheckedIdsChange?: (checkedIds: IdValue[]) => void;
+};
+
+export function useChecked({ checkedIds, onCheckedIdsChange }: Params) {
+  const [resolveedCheckedIds, setResolvedCheckedIds] = useState<IdValue[]>(checkedIds || []);
   const toggleChecked = (id: IdValue) => () => {
-    console.log('checkedIds', checkedIds);
-    const isChecked = checkedIds.includes(id);
-    console.log('isChecked', isChecked);
+    const isChecked = resolveedCheckedIds.includes(id);
     let newCheckedIds = isChecked
-      ? checkedIds.filter((checkedId) => checkedId !== id)
-      : [...checkedIds, id];
-    console.log('newCheckedIds', newCheckedIds);
-    setCheckedIds(newCheckedIds);
+      ? resolveedCheckedIds.filter((checkedId) => checkedId !== id)
+      : [...resolveedCheckedIds, id];
+    if (onCheckedIdsChange) {
+      onCheckedIdsChange(newCheckedIds);
+    } else {
+      setResolvedCheckedIds(newCheckedIds);
+    }
   };
 
-  return { checkedIds, toggleChecked };
+  useEffect(() => {
+    const isControlled = checkedIds !== undefined;
+    if (isControlled) {
+      setResolvedCheckedIds(checkedIds);
+    }
+  }, [checkedIds]);
+
+  return { toggleChecked, resolveedCheckedIds };
 }
