@@ -33,27 +33,54 @@ class Index extends React.Component {
       width: 0,
       height: 0,
     },
+    eachRenderNum: 500,
   }
   box = React.createRef()
   componentDidMount() {
     const { offsetWidth, offsetHeight } = this.box.current
     const originList = new Array(20000).fill(1)
-    this.setState({
-      dataList: originList,
-      position: {
-        width: offsetWidth,
-        height: offsetHeight,
+    const times = Math.ceil(originList.length / this.state.eachRenderNum)
+    let index = 1
+    this.setState(
+      {
+        dataList: originList,
+        position: {
+          width: offsetWidth,
+          height: offsetHeight,
+        },
       },
-      renderList: originList,
+      () => {
+        this.toRenderList(index, times)
+      }
+    )
+  }
+  toRenderList = (index, times) => {
+    if (index > times) return
+    const { renderList } = this.state
+    renderList.push(this.renderNewList(index))
+    this.setState({
+      renderList,
+    })
+    requestIdleCallback(() => {
+      this.toRenderList(++index, times)
     })
   }
-  render() {
-    const { renderList, position } = this.state
+  renderNewList = (index) => {
+    const { dataList, position, eachRenderNum } = this.state
+    const list = dataList.slice((index - 1) * eachRenderNum, index * eachRenderNum)
     return (
-      <div className="box" ref={this.box}>
-        {renderList.map((item, index) => {
+      <React.Fragment key={index}>
+        {list.map((item, index) => {
           return <Circle key={index} position={position} />
         })}
+      </React.Fragment>
+    )
+  }
+  render() {
+    const { renderList } = this.state
+    return (
+      <div className="box" ref={this.box}>
+        {renderList}
       </div>
     )
   }
