@@ -45,3 +45,15 @@ code {
 ul {
   padding-left: 20px;
 }
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.circle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
