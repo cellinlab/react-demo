@@ -37,6 +37,7 @@ class Index extends React.Component {
   }
   box = React.createRef()
   componentDidMount() {
+    console.log("componentDidMount")
     const { offsetWidth, offsetHeight } = this.box.current
     const originList = new Array(20000).fill(1)
     const times = Math.ceil(originList.length / this.state.eachRenderNum)
@@ -66,12 +67,13 @@ class Index extends React.Component {
     })
   }
   renderNewList = (index) => {
+    console.log(`renderNewList: ${index}`)
     const { dataList, position, eachRenderNum } = this.state
     const list = dataList.slice((index - 1) * eachRenderNum, index * eachRenderNum)
     return (
       <React.Fragment key={index}>
-        {list.map((item, index) => {
-          return <Circle key={index} position={position} />
+        {list.map((item, i) => {
+          return <Circle key={`${index}-${i}`} position={position} />
         })}
       </React.Fragment>
     )
