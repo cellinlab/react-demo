@@ -4,6 +4,7 @@ specifiers:
   '@emotion/react': ^11.10.6
   '@emotion/styled': ^11.10.6
   '@mui/material': ^5.11.15
+  '@mui/system': ^5.11.15
   '@testing-library/jest-dom': ^5.16.5
   '@testing-library/react': ^13.4.0
   '@testing-library/user-event': ^13.5.0
@@ -18,6 +19,7 @@ dependencies:
   '@emotion/react': 11.10.6_react@18.2.0
   '@emotion/styled': 11.10.6_3og6jmu6wvzuytygvdoxepq3x4
   '@mui/material': 5.11.15_fbxtuirhogpez7m7qjkm3itwca
+  '@mui/system': 5.11.15_xqp3pgpqjlfxxa3zxu4zoc4fba
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0
