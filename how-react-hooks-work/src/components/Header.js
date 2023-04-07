@@ -56,6 +56,40 @@ const Header = () => {
           <Link to="/redux-thunk">Redux Thunk</Link>
         </div>
       </div>
+      <hr />
+      <div className="header-wrapper">
+        <div className="header-nav">
+          <Link to="/minimize-state">Minimize State</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/controlled-component">Controlled Component</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/api-client">API Client</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/render-props">Render Props</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/list-with-more">List With More</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/custom-event">Custom Event</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/use-key-press">Use Key Press</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/use-form">Use Form</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/use-modal">Use Modal</Link>
+        </div>
+        <div className="header-nav">
+          <Link to="/toy-router">Toy Router</Link>
+        </div>
+      </div>
+      <hr />
     </div>
   );
 };
