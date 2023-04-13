@@ -1,9 +1,16 @@
-import UserList from "./UserList";
+import { useState } from "react"; // import useState
+import UsersList from "./UserList";
+import UserDetails from "./UserDetail"; // import new component
 
 export default function UsersPage() {
+  // manage selected user state
+  const [user, setUser] = useState(null);
+
+  // pass user state down
   return (
     <main className="users-page">
-      <UserList />
+      <UsersList user={user} setUser={setUser} />
+      <UserDetails user={user} />
     </main>
   );
 }
