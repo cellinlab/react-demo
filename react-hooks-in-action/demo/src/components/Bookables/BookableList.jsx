@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 import { days, sessions } from "../../static.json";
@@ -17,6 +17,8 @@ const initialState = {
 };
 
 export default function BookableList() {
+  const timerRef = useRef(null);
+  const nextBtnRef = useRef();
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const { group, bookableIndex, hasDetails, bookables, isLoading, error } = state;
 
@@ -36,11 +38,26 @@ export default function BookableList() {
       });
   }, []);
 
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      dispatch({ type: "NEXT_BOOKABLE" });
+    }, 3000);
+
+    return stopPresentation;
+  }, []);
+
+  const stopPresentation = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+  };
+
   const changeBookable = (index) => {
     dispatch({
       type: "SET_BOOKABLE",
       payload: index,
     });
+    nextBookable.current.focus();
   };
 
   const chnageGroup = (e) => {
@@ -95,7 +112,7 @@ export default function BookableList() {
           ))}
         </ul>
         <p>
-          <button className="btn" onClick={nextBookable} autoFocus>
+          <button className="btn" onClick={nextBookable} ref={nextBtnRef} autoFocus>
             <FaArrowRight />
             <span>Next</span>
           </button>
@@ -111,6 +128,9 @@ export default function BookableList() {
                   <input type="checkbox" checked={hasDetails} onChange={toggleDetails} />
                   Show Details
                 </label>
+                <button className="btn" onClick={stopPresentation}>
+                  Stop
+                </button>
               </span>
             </div>
             <p>{bookable.notes}</p>
