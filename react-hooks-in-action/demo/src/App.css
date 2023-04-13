@@ -191,3 +191,13 @@ main {
 .item-details .bookable-availability ul {
   list-style: square;
 }
+
+.date-picker {
+  display: flex;
+  margin: 0 0 1em;
+  justify-content: space-between;
+  align-items: center;
+}
+.date-picker button {
+  width: 8em;
+}

@@ -1,29 +1,54 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 import { bookables, days, sessions } from "../../static.json";
+import reducer from "./reducer";
+
+const initialState = {
+  group: "Rooms",
+  bookableIndex: 0,
+  hasDetails: true,
+  bookables,
+};
 
 export default function BookableList() {
-  const [group, setGroup] = useState("Kit");
-  const [bookableIndex, setBookableIndex] = useState(1);
-  const [hasDetails, setHasDetails] = useState(false);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const { group, bookableIndex, hasDetails, bookables } = state;
 
   const bookablesInGroup = bookables.filter((b) => b.group === group);
   const groups = [...new Set(bookables.map((b) => b.group))];
   const bookable = bookablesInGroup[bookableIndex];
 
   const changeBookable = (index) => {
-    setBookableIndex(index);
+    dispatch({
+      type: "SET_BOOKABLE",
+      payload: index,
+    });
+  };
+
+  const chnageGroup = (e) => {
+    dispatch({
+      type: "SET_GROUP",
+      payload: e.target.value,
+    });
   };
 
   const nextBookable = () => {
-    setBookableIndex((i) => (i + 1) % bookablesInGroup.length);
+    dispatch({
+      type: "NEXT_BOOKABLE",
+    });
+  };
+
+  const toggleDetails = () => {
+    dispatch({
+      type: "TOGGLE_HAS_DETAILS",
+    });
   };
 
   return (
     <>
       <div>
-        <select value={group} onChange={(e) => setGroup(e.target.value)}>
+        <select value={group} onChange={chnageGroup}>
           {groups.map((g) => (
             <option key={g} value={g}>
               {g}
@@ -53,11 +78,7 @@ export default function BookableList() {
               <h2>{bookable.title} </h2>
               <span className="controls">
                 <label htmlFor="">
-                  <input
-                    type="checkbox"
-                    checked={hasDetails}
-                    onChange={() => setHasDetails((h) => !h)}
-                  />
+                  <input type="checkbox" checked={hasDetails} onChange={toggleDetails} />
                   Show Details
                 </label>
               </span>
