@@ -10,8 +10,6 @@ export default function BookableList({ bookable, setBookable }) {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const nextBtnRef = useRef();
-
   const group = bookable?.group;
 
   const bookablesInGroup = bookables.filter((b) => b.group === group);
@@ -39,7 +37,6 @@ export default function BookableList({ bookable, setBookable }) {
 
   const changeBookable = (selectedBookable) => {
     setBookable(selectedBookable);
-    nextBtnRef.current.focus();
   };
 
   const nextBookable = () => {
@@ -81,7 +78,7 @@ export default function BookableList({ bookable, setBookable }) {
         ))}
       </ul>
       <p>
-        <button className="btn" onClick={nextBookable} ref={nextBtnRef} autoFocus>
+        <button className="btn" onClick={nextBookable} autoFocus>
           <FaArrowRight />
           <span>Next</span>
         </button>
