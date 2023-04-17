@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+
 import Spinner from "../common/Spinner";
 
 import { useUser } from "./UserContext";
+import getData from "../../utils/api";
 
 export default function UserPicker() {
-  const [users, setUsers] = useState(null);
-
   const [user, setUser] = useUser();
 
+  const {
+    data: users = [],
+    status,
+    error,
+  } = useQuery(["users"], () => getData("http://localhost:3001/users"));
+
   useEffect(() => {
-    fetch("http://localhost:3001/users")
-      .then((resp) => resp.json())
-      .then((data) => {
-        setUsers(data);
-        setUser(data[0]);
-      });
-  }, [setUser]);
+    setUser(users[0]);
+  }, [users, setUser]);
 
   function handleSelect(e) {
     const selectedId = parseInt(e.target.value, 10);
@@ -24,7 +26,11 @@ export default function UserPicker() {
     setUser(selectedUser);
   }
 
-  if (users === null) {
+  if (status === "error") {
+    return <span>Error: {error.message}</span>;
+  }
+
+  if (status === "loading") {
     return <Spinner />;
   }
 

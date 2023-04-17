@@ -1,14 +1,18 @@
 import { Link, useParams } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
 
 import BookableList from "./BookableList";
 import BookableDetail from "./BookableDetail";
 import PageSpinner from "../common/PageSpinner";
-
-import useFetch from "../../utils/useFetch";
+import getData from "../../utils/api";
 
 export default function BookablesView() {
-  const { data: bookables = [], status, error } = useFetch("http://localhost:3001/bookables");
+  const {
+    data: bookables = [],
+    status,
+    error,
+  } = useQuery(["bookables"], () => getData("http://localhost:3001/bookables"));
 
   const { id } = useParams();
 

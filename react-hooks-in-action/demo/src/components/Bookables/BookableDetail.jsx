@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
 
 import { days, sessions } from "../../static.json";
 
@@ -18,6 +20,10 @@ export default function BookableDetail({ bookable }) {
             <input type="checkbox" checked={hasDetails} onChange={toggleDetails} />
             Show Details
           </label>
+          <Link to={`/bookables/${bookable.id}/edit`} className="btn btm-header" replace={true}>
+            <FaEdit />
+            <span>Edit</span>
+          </Link>
         </span>
       </div>
       <p>{bookable.notes}</p>

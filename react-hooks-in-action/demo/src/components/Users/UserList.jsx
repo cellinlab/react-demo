@@ -1,30 +1,21 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+
 import Spinner from "../common/Spinner";
 import getData from "../../utils/api";
 
 export default function UsersList({ user, setUser }) {
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [users, setUsers] = useState(null);
+  const {
+    data: users = [],
+    status,
+    error,
+  } = useQuery(["users"], () => getData("http://localhost:3001/users"));
 
-  useEffect(() => {
-    getData("http://localhost:3001/users")
-      .then((data) => {
-        setUser(data[0]); // set initial user to first (or undefined)
-        setUsers(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setIsLoading(false);
-      });
-  }, [setUser]); // pass in dependency
-
-  if (error) {
+  if (status === "error") {
     return <p>{error.message}</p>;
   }
 
-  if (isLoading) {
+  if (status === "loading") {
     return (
       <p>
         <Spinner /> Loading users...
@@ -32,8 +23,6 @@ export default function UsersList({ user, setUser }) {
     );
   }
 
-  // user user.id to match selection.
-  // remove the UI for user details
   return (
     <ul className="users items-list-nav">
       {users.map((u) => (
