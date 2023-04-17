@@ -1,50 +1,25 @@
-import React, { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 
-import useFetch from "../../utils/useFetch";
-
-import Spinner from "../common/Spinner";
-
-export default function BookableList({ bookable, setBookable }) {
-  const { data: bookables = [], status, error } = useFetch("http://localhost:3001/bookables");
-
+export default function BookableList({ bookable, bookables, getUrl }) {
   const group = bookable?.group;
 
   const bookablesInGroup = bookables.filter((b) => b.group === group);
   const groups = [...new Set(bookables.map((b) => b.group))];
 
-  useEffect(() => {
-    setBookable(bookables[0]);
-  }, [bookables, setBookable]);
+  const navigate = useNavigate();
 
   const chnageGroup = (e) => {
     const bookablesInSelectedGroup = bookables.filter((b) => b.group === e.target.value);
-    setBookable(bookablesInSelectedGroup[0]);
-  };
-
-  const changeBookable = (selectedBookable) => {
-    setBookable(selectedBookable);
+    navigate(getUrl(bookablesInSelectedGroup[0].id));
   };
 
   const nextBookable = () => {
     const i = bookablesInGroup.indexOf(bookable);
     const nextIndex = (i + 1) % bookablesInGroup.length;
     const nextBookable = bookablesInGroup[nextIndex];
-    setBookable(nextBookable);
+    navigate(getUrl(nextBookable.id));
   };
-
-  if (status === "error") {
-    return <p>Sorry, there was an error loading the bookables: {error.message}</p>;
-  }
-
-  if (status === "loading") {
-    return (
-      <p>
-        <Spinner />
-        Loading bookables...
-      </p>
-    );
-  }
 
   return (
     <div>
@@ -58,9 +33,9 @@ export default function BookableList({ bookable, setBookable }) {
       <ul className="bookables items-list-nav">
         {bookablesInGroup.map((b) => (
           <li key={b.id} className={b.id === bookable.id ? "selected" : ""}>
-            <button className="btn" onClick={() => changeBookable(b)}>
+            <Link to={getUrl(b.id)} className="btn" replace={true}>
               {b.title}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
