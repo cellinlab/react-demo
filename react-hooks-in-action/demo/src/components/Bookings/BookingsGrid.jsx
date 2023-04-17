@@ -1,46 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { getGrid, transformBookings } from "./grid-builder";
-
-import { getBookings } from "../../utils/api";
+import { useBookings, useGrid } from "./bookingsHooks";
 
 import Spinner from "../common/Spinner";
 
 export default function BookingsGrid(props) {
   const { week, bookable, booking, setBooking } = props;
 
-  const [bookings, setBookings] = useState(null);
-  const [error, setError] = useState(null);
+  const { bookings, status, error } = useBookings(bookable?.id, week.start, week.end);
 
-  const { grid, sessions, dates } = useMemo(
-    () => (bookable ? getGrid(bookable, week.start) : {}),
-    [bookable, week.start]
-  );
+  const { grid, sessions, dates } = useGrid(bookable, week.start);
 
   useEffect(() => {
-    if (bookable) {
-      let doUpdate = true;
-      setBooking(null);
-      setError(null);
-      setBookings(null);
-
-      getBookings(bookable.id, week.start, week.end)
-        .then((data) => {
-          if (doUpdate) {
-            setBookings(transformBookings(data));
-          }
-        })
-        .catch((err) => {
-          if (doUpdate) {
-            setError(err.message);
-          }
-        });
-
-      return () => {
-        doUpdate = false;
-      };
-    }
-  }, [bookable, week, setBooking]);
+    setBooking(null);
+  }, [bookable, week.start, setBooking]);
 
   function cell(session, date) {
     const cellData = bookings?.[session]?.[date] || grid[session][date];
@@ -68,10 +41,10 @@ export default function BookingsGrid(props) {
 
   return (
     <>
-      {error && (
+      {status === "error" && (
         <p className="bookingsError">Sorry, there was an error loading the bookings: {error}</p>
       )}
-      <table className={bookings ? "bookingsGrid active" : "bookingsGrid"}>
+      <table className={status === "success" ? "bookingsGrid active" : "bookingsGrid"}>
         <thead>
           <tr>
             <th>

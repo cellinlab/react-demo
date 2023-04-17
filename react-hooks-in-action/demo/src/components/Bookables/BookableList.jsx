@@ -1,14 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
-import getData from "../../utils/api";
+import useFetch from "../../utils/useFetch";
 
 import Spinner from "../common/Spinner";
 
 export default function BookableList({ bookable, setBookable }) {
-  const [bookables, setBookables] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data: bookables = [], status, error } = useFetch("http://localhost:3001/bookables");
 
   const group = bookable?.group;
 
@@ -16,19 +14,8 @@ export default function BookableList({ bookable, setBookable }) {
   const groups = [...new Set(bookables.map((b) => b.group))];
 
   useEffect(() => {
-    setIsLoading(true);
-    setError(null);
-    getData("http://localhost:3001/bookables")
-      .then((data) => {
-        setBookable(data[0]);
-        setBookables(data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setIsLoading(false);
-      });
-  }, [setBookable]);
+    setBookable(bookables[0]);
+  }, [bookables, setBookable]);
 
   const chnageGroup = (e) => {
     const bookablesInSelectedGroup = bookables.filter((b) => b.group === e.target.value);
@@ -46,11 +33,11 @@ export default function BookableList({ bookable, setBookable }) {
     setBookable(nextBookable);
   };
 
-  if (error) {
-    return <p>Sorry, there was an error loading the bookables: {error}</p>;
+  if (status === "error") {
+    return <p>Sorry, there was an error loading the bookables: {error.message}</p>;
   }
 
-  if (isLoading) {
+  if (status === "loading") {
     return (
       <p>
         <Spinner />
