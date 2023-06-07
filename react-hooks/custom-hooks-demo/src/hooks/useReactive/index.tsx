@@ -1,4 +1,4 @@
-import { useUpdate, useCreation, useLatest } from '.';
+import { useUpdate, useCreation, useLatest } from '../index';
 
 const observer = <T extends Record<string, any>>(
   initialValaue: T,

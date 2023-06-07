@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLatest } from ".";
+import { useLatest } from "../index";
 
 const useUnMount = (fn: () => void) => {
   const fnRef = useLatest(fn);
