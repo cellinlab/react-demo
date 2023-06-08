@@ -7,6 +7,12 @@ import useUpdate from './useUpdate';
 import useCreation from './useCreation';
 import useReactive from './useReactive';
 
+import useEventListener from './useEventListener';
+import useHover from './useHover';
+import useDocumentVisibility from './useDocumentVisibility';
+import useInViewport from './useInViewport';
+import useNetwork from './useNetWork';
+
 export {
   useLatest,
   useMount,
@@ -16,4 +22,10 @@ export {
   useUpdate,
   useCreation,
   useReactive,
+
+  useEventListener,
+  useHover,
+  useDocumentVisibility,
+  useInViewport,
+  useNetwork,
 };

@@ -40,6 +40,21 @@ const Layout = () => {
           </li>
         </ul>
         <hr />
+        <h2>自定义 DOM Hooks</h2>
+        <ul>
+          <li>
+            <Link to="/useHover">useHover</Link>
+          </li>
+          <li>
+            <Link to="/useDocumentVisibility">useDocumentVisibility</Link>
+          </li>
+          <li>
+            <Link to="/useInViewport">useInViewport</Link>
+          </li>
+          <li>
+            <Link to="/useNetwork">useNetwork</Link>
+          </li>
+        </ul>
       </div>
       <div
         style={{
