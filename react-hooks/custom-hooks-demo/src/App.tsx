@@ -15,6 +15,10 @@ import UseDocumentVisibilityDemo from './pages/UseDocumentVisibilityDemo';
 import UseInViewportDemo from './pages/UseInViewportDemo';
 import UseNetworkDemo from './pages/UseNetworkDemo';
 
+import UseSelections from './pages/UseSelections';
+import UseCountDownDemo from './pages/UseCountDownDemo';
+import UseCssDemo from './pages/UseCssDemo';
+
 const App = () => {
   return (
     <Routes>
@@ -32,6 +36,10 @@ const App = () => {
         <Route path="/useDocumentVisibility" element={<UseDocumentVisibilityDemo />} />
         <Route path="/useInViewport" element={<UseInViewportDemo />} />
         <Route path="/useNetwork" element={<UseNetworkDemo />} />
+        {/* -- custom business hooks */}
+        <Route path="/useSelections" element={<UseSelections />} />
+        <Route path="/useCountDown" element={<UseCountDownDemo />} />
+        <Route path="/useCss" element={<UseCssDemo />} />
       </Route>
     </Routes>
   );

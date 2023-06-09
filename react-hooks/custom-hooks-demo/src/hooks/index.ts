@@ -13,6 +13,10 @@ import useDocumentVisibility from './useDocumentVisibility';
 import useInViewport from './useInViewport';
 import useNetwork from './useNetWork';
 
+import useSelections from './useSelections';
+import useCountDown from './useCountDown';
+import useCss from './useCss';
+
 export {
   useLatest,
   useMount,
@@ -28,4 +32,8 @@ export {
   useDocumentVisibility,
   useInViewport,
   useNetwork,
+
+  useSelections,
+  useCountDown,
+  useCss,
 };

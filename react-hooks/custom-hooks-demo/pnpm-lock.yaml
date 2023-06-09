@@ -16,6 +16,7 @@ specifiers:
   antd: ^5.0.0
   babel-plugin-transform-es2015-modules-commonjs: ^6.26.2
   copy-to-clipboard: ^3.3.3
+  dayjs: ^1.11.8
   eslint: ^8.38.0
   eslint-plugin-react-hooks: ^4.6.0
   eslint-plugin-react-refresh: ^0.3.4
@@ -44,6 +45,7 @@ dependencies:
   '@types/node': 16.18.34
   antd: 5.6.0_biqbaboplfbrettd7655fr4n2y
   copy-to-clipboard: 3.3.3
+  dayjs: 1.11.8
   hooks: 0.3.2
   lodash: 4.17.21
   mockjs: 1.1.0
