@@ -17,6 +17,17 @@ import useSelections from './useSelections';
 import useCountDown from './useCountDown';
 import useCss from './useCss';
 
+import useDebounceFn from './useDebounceFn';
+import useDebounce from './useDebounce';
+import useThrottleFn from './useThrottleFn';
+import useThrottle from './useThrottle';
+import useLockFn from './useLockFn';
+import useFullscreen from './useFullscreen';
+import useCopy from './useCopy';
+import useTextSelection from './useTextSelection';
+import useResonsive from './useResponsive';
+import useTrackedEffect from './useTrackedEffect';
+
 export {
   useLatest,
   useMount,
@@ -36,4 +47,15 @@ export {
   useSelections,
   useCountDown,
   useCss,
+
+  useDebounceFn,
+  useDebounce,
+  useThrottleFn,
+  useThrottle,
+  useLockFn,
+  useFullscreen,
+  useCopy,
+  useTextSelection,
+  useResonsive,
+  useTrackedEffect,
 };

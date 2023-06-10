@@ -68,6 +68,40 @@ const Layout = () => {
             <Link to="/useCss">useCss</Link>
           </li>
         </ul>
+        <hr />
+        <h2>自定义通用 Hooks</h2>
+        <ul>
+          <li>
+            <Link to="/useDebounceFn">useDebounceFn</Link>
+          </li>
+          <li>
+            <Link to="/useDebounce">useDebounce</Link>
+          </li>
+          <li>
+            <Link to="/useThrottleFn">useThrottleFn</Link>
+          </li>
+          <li>
+            <Link to="/useThrottle">useThrottle</Link>
+          </li>
+          <li>
+            <Link to="/useLockFn">useLockFn</Link>
+          </li>
+          <li>
+            <Link to="/useFullscreen">useFullscreen</Link>
+          </li>
+          <li>
+            <Link to="/useCopy">useCopy</Link>
+          </li>
+          <li>
+            <Link to="/useTextSelection">useTextSelection</Link>
+          </li>
+          <li>
+            <Link to="/useResponsive">useResponsive</Link>
+          </li>
+          <li>
+            <Link to="/useTrackedEffect">useTrackedEffect</Link>
+          </li>
+        </ul>
       </div>
       <div
         style={{
