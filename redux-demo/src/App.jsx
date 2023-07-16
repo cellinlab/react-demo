@@ -3,6 +3,7 @@ import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 import BasicExample from "./pages/BasicExample";
 import RtkExample from "./pages/RtkExample";
 import SimpleTodo from "./pages/SimpleTodo";
+import TodoMVC from "./pages/TodoMVC";
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
           <li>
             <NavLink to="/simple-todo">SimpleTodo</NavLink>
           </li>
+          <li>
+            <NavLink to="/todo-mvc">TodoMVC</NavLink>
+          </li>
         </ul>
       </div>
       <div
@@ -42,6 +46,7 @@ const App = () => {
           <Route path="/basic-example" element={<BasicExample />} />
           <Route path="/rtk-example" element={<RtkExample />} />
           <Route path="/simple-todo" element={<SimpleTodo />} />
+          <Route path="/todo-mvc" element={<TodoMVC />} />
         </Routes>
       </div>
     </div>
