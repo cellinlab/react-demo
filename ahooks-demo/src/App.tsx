@@ -6,6 +6,8 @@ import Request from "./pages/Request";
 import DragAndDrop from "./pages/DragAndDrop";
 import SideEffect from "./pages/SideEffect";
 import LifeCycle from "./pages/LifeCycle";
+import State from "./pages/State";
+import Dom from "./pages/Dom";
 
 function App() {
   return (
@@ -39,6 +41,12 @@ function App() {
             <li>
               <Link to="/lifecycle">LifeCycle</Link>
             </li>
+            <li>
+              <Link to="/state">State</Link>
+            </li>
+            <li>
+              <Link to="/dom">Dom</Link>
+            </li>
           </ul>
         </div>
         <div
@@ -54,6 +62,8 @@ function App() {
             <Route path="/draganddrop" component={DragAndDrop} />
             <Route path="/sideeffect" component={SideEffect} />
             <Route path="/lifecycle" component={LifeCycle} />
+            <Route path="/state" component={State} />
+            <Route path="/dom" component={Dom} />
           </Switch>
         </div>
       </div>
