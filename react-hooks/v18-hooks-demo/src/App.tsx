@@ -6,6 +6,7 @@ import UseTransitionDemo from "./UseTransitionDemo";
 import UseDeferredValueDemo from "./UseDeferredValueDemo";
 import UseInsertionEffectDemo from "./UseInsertionEffectDemo";
 import UseIdDemo from "./UseIdDemo";
+import UseStateArr from './UseStateArr';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/useDeferredValue" element={<UseDeferredValueDemo />} />
           <Route path="/useInsertionEffect" element={<UseInsertionEffectDemo />} />
           <Route path="/useId" element={<UseIdDemo />} />
+          <Route path="/useStateArr" element={<UseStateArr />} />
         </Route>
       </Routes>
     </div>

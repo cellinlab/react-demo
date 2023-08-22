@@ -33,6 +33,9 @@ const Layout = () => {
           <li>
             <Link to="/useId">useId</Link>
           </li>
+          <li>
+            <Link to="/useStateArr">useStateArr</Link>
+          </li>
         </ul>
       </nav>
       <main
