@@ -7,15 +7,10 @@ const DragMoal = (props) => {
     modalClass = `drag-modal-${Math.random().toString(36).substr(2, 8)}`,
   } = props;
   const [visible, setVisible] = useState(false);
-  const [dragInit, setDragInit] = useState(false);
   
   const initDrag = () => {
-    if (dragInit) {
-      return;
-    }
     const dragModal = document.querySelector(`.${modalClass}`);
     const drag = new Draggable(dragModal);
-    setDragInit(true);
   };
 
   useEffect(() => {
