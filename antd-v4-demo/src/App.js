@@ -1,6 +1,7 @@
 import { Route, Routes, Link } from 'react-router-dom'
 
 import PerfModal from "./pages/PerfModal"
+import DragMoal from './pages/DragMoal';
 
 import './App.css'
 
@@ -26,6 +27,9 @@ function App() {
           <li>
             <Link to="/perfmodal">PerfModal</Link>
           </li>
+          <li>
+            <Link to="/dragmodal">DragMoal</Link>
+          </li>
         </ul>
       </div>
       <div
@@ -36,6 +40,7 @@ function App() {
       >
         <Routes>
           <Route path="/perfmodal" element={<PerfModal />} />
+          <Route path="/dragmodal" element={<DragMoal />} />
         </Routes>
       </div>
     </div>
